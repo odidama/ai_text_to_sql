@@ -1,0 +1,16 @@
+    name: Create .env file with Action
+    on: [push]
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout code
+            uses: actions/checkout@v4
+          - name: Create .env file
+            uses: SpicyPizza/create-envfile@v2.0.3 # Example action
+            with:
+              envfile: |
+                GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY }}
+                NEON_DATABASE_URL=${{ secrets.NEON_DATABASE_URL }}
+          - name: Use .env file (example)
+            run: cat .env
