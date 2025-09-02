@@ -13,9 +13,9 @@ load_dotenv()
 
 st.set_page_config(page_title="My App", page_icon="🪼")
 
-st.title("Hi! I am Emeka. I will help you chat with your data on a cloud DB!")
-st.markdown("Please note: small[Customers and Persons data available for now. Some sample questions: Are there any "
-            "customers from Canada?, DO we have any customers named Emeka from Malaysia? etc].")
+st.title("Hi! Ask me anything about your data!")
+st.markdown("Quick info: Only sample Customers and Persons data are available for now. Some sample questions: Are "
+            "there any customers from Canada?, Do we have any customers named Emeka from Malaysia? etc.")
 
 
 def connect_to_db():
