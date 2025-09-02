@@ -13,7 +13,7 @@ load_dotenv()
 
 st.set_page_config(page_title="My App", page_icon="🪼")
 
-st.title("Hi! Ask me anything about your data!")
+st.title("Hi! I'm ice, happy to help...")
 st.markdown("Quick info: Only sample Customers and Persons data are available for now. Some sample questions: Are "
             "there any customers from Canada?, Do we have any customers named Emeka from Malaysia? etc.")
 
