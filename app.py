@@ -115,7 +115,7 @@ if "chart_history" not in st.session_state:
     ]
 
 with st.sidebar:
-    default_db = st.secrets["NEON_DATABASE_URL", "Not Set"]
+    default_db = st.secrets["NEON_DATABASE_URL"]
     st.subheader("Settings")
     st.write("This is an ai chat application that interacts with a cloud DB and analyzes data through Natural "
              "Language. The codebase is at (https://github.com/odidama/ai_text_to_sql). Login and experiment! ")
