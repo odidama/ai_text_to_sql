@@ -57,9 +57,8 @@ def initiate_llm(load_from_hugging_face=False):
 
 
 def write_sql_query(llm):
-    template = """
-    Based on the table schema below, write a SQL query that would answer the user's question:
-    {schema}
+    template = """You are an expert in SQL query generation. Based on the table schema below, write an SQL query that 
+    would answer the user's question: {schema}
     
     Question: {question}
     SQL Query:
@@ -125,7 +124,7 @@ with st.sidebar:
     st.text_input("Port:", value="9472", disabled=True, key="Port")
     st.text_input("User:", value="You", disabled=True, key="User")
     st.text_input("Password:", value="********", disabled=True, key="Password")
-    st.text_input("Database:", value="AML_KYC_Analysis", disabled=True, key="Database")
+    st.text_input("Database:", value="Sample_DataBase", disabled=True, key="Database")
 
     if st.button("Login"):
         with st.spinner("Connecting to DB..."):
