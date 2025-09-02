@@ -11,9 +11,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-st.set_page_config(page_title="My App", page_icon=":speech_baloon")
+st.set_page_config(page_title="My App", page_icon="🪼")
 
 st.title("Hi! I am Emeka. I will help you chat with your data on a cloud DB!")
+st.markdown("Please note: small[Customers and Persons data available for now. Some sample questions: Are there any "
+            "customers from Canada?, DO we have any customers named Emeka from Malaysia? etc].")
 
 
 def connect_to_db():
@@ -111,14 +113,14 @@ def process_user_query(query, llm):
 
 if "chart_history" not in st.session_state:
     st.session_state.chart_history = [
-        AIMessage(content="Hello! I'm geovac, your SQL assistant. How can I help you with your data today?"),
+        AIMessage(content="Hello! I'm geovac, your SQL assistant."),
     ]
 
 with st.sidebar:
     default_db = st.secrets["NEON_DATABASE_URL"]
     st.subheader("Settings")
     st.write("This is an ai chat application that interacts with a cloud DB and analyzes data through Natural "
-             "Language. The codebase is at (https://github.com/odidama/ai_text_to_sql). Login and experiment! ")
+             "Language. Login and experiment! ")
     st.text_input("Host:", value="NeonDB", disabled=True, key="Host")
     st.text_input("Port:", value="9472", disabled=True, key="Port")
     st.text_input("User:", value="You", disabled=True, key="User")
