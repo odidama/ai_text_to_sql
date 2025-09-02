@@ -13,12 +13,13 @@ load_dotenv()
 
 st.set_page_config(page_title="My App", page_icon=":speech_baloon")
 
-st.title("Chat with Data from a DB!")
+st.title("Hi! I am Emeka. I will help you chat with your data on a cloud DB!")
 
 
 def connect_to_db():
     try:
-        neon_conn_string = os.getenv("NEON_DATABASE_URL")
+        # neon_conn_string = os.getenv("NEON_DATABASE_URL")
+        neon_conn_string = st.secrets["NEON_DATABASE_URL"]
         engine = SQLDatabase.from_uri(neon_conn_string, schema="public", sample_rows_in_table_info=5)
         # engine = create_engine(neon_conn_string)
         return engine
@@ -49,7 +50,8 @@ def initiate_llm(load_from_hugging_face=False):
             max_new_tokens=200
         )
         return ChatHuggingFace(llm=llm)
-    return ChatGoogleGenerativeAI(model="gemini-2.5-flash", api_key=os.getenv("GOOGLE_API_KEY"), temperature=0)
+    # return ChatGoogleGenerativeAI(model="gemini-2.5-flash", api_key=os.getenv("GOOGLE_API_KEY"), temperature=0)
+    return ChatGoogleGenerativeAI(model="gemini-2.5-flash", api_key=st.secrets["GOOGLE_API_KEY"], temperature=0)
 
 
 def write_sql_query(llm):
@@ -109,14 +111,14 @@ def process_user_query(query, llm):
 
 if "chart_history" not in st.session_state:
     st.session_state.chart_history = [
-        AIMessage(content="Hello! I'm your SQL assistant. How can I help you with your data today?"),
+        AIMessage(content="Hello! I'm geovac, your SQL assistant. How can I help you with your data today?"),
     ]
 
 with st.sidebar:
-    default_db = os.getenv("NEON_DATABASE_URL", "Not Set")
+    default_db = st.secrets["NEON_DATABASE_URL", "Not Set"]
     st.subheader("Settings")
     st.write("This is an ai chat application that interacts with a cloud DB and analyzes data through Natural "
-             "Language. Login and experiment!")
+             "Language. The codebase is at (https://github.com/odidama/ai_text_to_sql). Login and experiment! ")
     st.text_input("Host:", value="NeonDB", disabled=True, key="Host")
     st.text_input("Port:", value="9472", disabled=True, key="Port")
     st.text_input("User:", value="You", disabled=True, key="User")
