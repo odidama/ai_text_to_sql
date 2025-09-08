@@ -120,8 +120,8 @@ with st.sidebar:
     st.subheader("Settings")
     st.write("This is an ai chat application that interacts with a cloud DB and analyzes data through Natural "
              "Language. Login and experiment! ")
-    st.text_input("Host:", value="NeonDB", disabled=True, key="Host")
-    st.text_input("Port:", value="9472", disabled=True, key="Port")
+    st.text_input("Host:", value="MyDB", disabled=True, key="Host")
+    st.text_input("Port:", value="1234", disabled=True, key="Port")
     st.text_input("User:", value="You", disabled=True, key="User")
     st.text_input("Password:", value="********", disabled=True, key="Password")
     st.text_input("Database:", value="Sample_DataBase", disabled=True, key="Database")
