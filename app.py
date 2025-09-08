@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+import mysql.connector
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_community.utilities import SQLDatabase
@@ -15,20 +16,35 @@ st.set_page_config(page_title="My App", page_icon="🪼")
 
 st.title("Hi! I'm geovac, happy to help...")
 st.markdown("Quick info: Only sample Customers and Persons data are available for now. Some sample questions: Are "
-            "there any customers from Canada?, Do we have any customers named Emeka from Malaysia? etc.")
+            "there any customers from Canada? Do we have any customers named Emeka from Malaysia? etc.")
+
+
+# def connect_to_db():
+#     try:
+#         # neon_conn_string = os.getenv("NEON_DATABASE_URL")
+#         neon_conn_string = st.secrets["NEON_DATABASE_URL"]
+#         engine = SQLDatabase.from_uri(neon_conn_string, schema="public", sample_rows_in_table_info=5)
+#         # engine = create_engine(neon_conn_string)
+#         return engine
+#     except Exception as e:
+#         print(f"Error connecting to DB: {e}")
+#         return None
 
 
 def connect_to_db():
     try:
-        # neon_conn_string = os.getenv("NEON_DATABASE_URL")
-        neon_conn_string = st.secrets["NEON_DATABASE_URL"]
-        engine = SQLDatabase.from_uri(neon_conn_string, schema="public", sample_rows_in_table_info=5)
-        # engine = create_engine(neon_conn_string)
+        host = '127.0.0.1'
+        port = os.getenv('db_port')
+        user = os.getenv('MYSQL_USER')
+        password = os.getenv('MYSQL_PASSWORD')
+        database = os.getenv('MYSQL_DATABASE')
+        db_uri = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}"
+        # engine = create_engine(db_uri, echo=False)
+        engine = SQLDatabase.from_uri(db_uri, schema="geovac")
         return engine
-    except Exception as e:
-        print(f"Error connecting to DB: {e}")
-        return None
-
+    except mysql.connector.Error as err:
+        print(f"Error connecting to MySQL: {err}")
+    return None
 
 db = connect_to_db()
 
