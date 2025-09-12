@@ -34,10 +34,10 @@ st.markdown("Quick info: Only sample Customers and Persons data are available fo
 def connect_to_db():
     try:
         host = '127.0.0.1'
-        port = os.getenv('db_port')
-        user = os.getenv('MYSQL_USER')
-        password = os.getenv('MYSQL_PASSWORD')
-        database = os.getenv('MYSQL_DATABASE')
+        port = st.secrets["DB_PORT"]
+        user = st.secrets["MYSQL_USER"]
+        password = st.secrets["MYSQL_PASSWORD"]
+        database = st.secrets["MYSQL_DATABASE"]
         db_uri = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}"
         # engine = create_engine(db_uri, echo=False)
         engine = SQLDatabase.from_uri(db_uri, schema="geovac")
