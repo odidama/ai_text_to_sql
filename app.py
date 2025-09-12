@@ -21,7 +21,7 @@ st.markdown("Quick info: Only sample Customers and Persons data are available fo
 
 def connect_to_db():
     try:
-        conn_string = os.getenv("SUPABASE_URI")
+        conn_string = st.secrets["SUPABASE_URI"]
         engine = SQLDatabase.from_uri(conn_string, sample_rows_in_table_info=0)
         return engine
     except Exception as e:
@@ -48,7 +48,7 @@ db = connect_to_db()
 
 
 
-def get_db_schema():
+def get_db_schema(_):
     return db.get_table_info()
 
 
