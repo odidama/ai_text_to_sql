@@ -19,34 +19,33 @@ st.markdown("Quick info: Only sample Customers and Persons data are available fo
             "there any customers from Canada? Do we have any customers named Emeka from Malaysia? etc.")
 
 
-# def connect_to_db():
-#     try:
-#         # neon_conn_string = os.getenv("NEON_DATABASE_URL")
-#         neon_conn_string = st.secrets["NEON_DATABASE_URL"]
-#         engine = SQLDatabase.from_uri(neon_conn_string, schema="public", sample_rows_in_table_info=5)
-#         # engine = create_engine(neon_conn_string)
-#         return engine
-#     except Exception as e:
-#         print(f"Error connecting to DB: {e}")
-#         return None
-
-
 def connect_to_db():
     try:
-        host = '127.0.0.1'
-        port = st.secrets["DB_PORT"]
-        user = st.secrets["MYSQL_USER"]
-        password = st.secrets["MYSQL_PASSWORD"]
-        database = st.secrets["MYSQL_DATABASE"]
-        db_uri = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}"
-        # engine = create_engine(db_uri, echo=False)
-        engine = SQLDatabase.from_uri(db_uri, schema="geovac")
+        conn_string = os.getenv("SUPABASE_URI")
+        engine = SQLDatabase.from_uri(conn_string, sample_rows_in_table_info=0)
         return engine
-    except mysql.connector.Error as err:
-        print(f"Error connecting to MySQL: {err}")
-    return None
+    except Exception as e:
+        print(f"Error connecting to DB: {e}")
+        return None
+
+
+# def connect_to_db():
+#     try:
+#         host = '127.0.0.1'
+#         port = st.secrets["DB_PORT"]
+#         user = st.secrets["MYSQL_USER"]
+#         password = st.secrets["MYSQL_PASSWORD"]
+#         database = st.secrets["MYSQL_DATABASE"]
+#         db_uri = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}"
+#         # engine = create_engine(db_uri, echo=False)
+#         engine = SQLDatabase.from_uri(db_uri, schema="geovac")
+#         return engine
+#     except mysql.connector.Error as err:
+#         print(f"Error connecting to MySQL: {err}")
+#     return None
 
 db = connect_to_db()
+
 
 
 def get_db_schema(_):
