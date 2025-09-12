@@ -48,7 +48,7 @@ db = connect_to_db()
 
 
 
-def get_db_schema(_):
+def get_db_schema():
     return db.get_table_info()
 
 
