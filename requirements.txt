@@ -17,12 +17,12 @@ frozenlist==1.7.0
 fsspec==2025.7.0
 gitdb==4.0.12
 GitPython==3.1.45
-google-ai-generativelanguage
+google-ai-generativelanguage==0.6.18
 google-api-core==2.25.1
 google-api-python-client==2.179.0
 google-auth==2.40.3
 google-auth-httplib2==0.2.0
-google-generativeai
+google-generativeai==0.8.5
 googleapis-common-protos==1.70.0
 grpcio==1.74.0
 grpcio-status==1.71.2
@@ -42,7 +42,7 @@ jsonschema-specifications==2025.4.1
 langchain==0.3.27
 langchain-community==0.3.29
 langchain-core==0.3.75
-langchain-google-genai
+langchain-google-genai==2.1.10
 langchain-huggingface==0.3.1
 langchain-text-splitters==0.3.10
 langsmith==0.4.20
@@ -60,6 +60,7 @@ pillow==11.3.0
 propcache==0.3.2
 proto-plus==1.26.1
 protobuf==5.29.5
+psycopg2==2.9.10
 psycopg2-binary==2.9.10
 pyarrow==21.0.0
 pyasn1==0.6.1
@@ -68,6 +69,7 @@ pydantic==2.11.7
 pydantic-settings==2.10.1
 pydantic_core==2.33.2
 pydeck==0.9.1
+PyMySQL==1.1.2
 pyparsing==3.2.3
 python-dateutil==2.9.0.post0
 python-dotenv==1.1.1
